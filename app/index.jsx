@@ -1,8 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
-import { Link } from "expo-router";
+import { Redirect, router } from "expo-router";
 
 import { images } from "../constants";
+import CustomButton from "../components/CustomButton";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             className="w-[130px] h-[84px]"
             resizeMode="contain"
           />
+
           <Image
             source={images.cards}
             className="max-w-[380px] w-full h-[300px]"
@@ -31,12 +33,20 @@ export default function App() {
               resizeMode="contain"
             />
           </View>
+
           <Text className="text-sm font-pregular text-gray-100 mt-10 text-center">
             Where creativity meets innovation: embark on a journey of limitless
             exploration with Auro
           </Text>
+
+          <CustomButton
+            title="Continue With Email"
+            handlePress={() => router.push("/sign-in")}
+            containerStyles="w-full mt-7"
+          />
         </View>
       </ScrollView>
+      <StatusBar style="light" backgroundColor="#161622" />
     </SafeAreaView>
   );
 }
